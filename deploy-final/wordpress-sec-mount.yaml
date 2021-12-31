@@ -36,15 +36,13 @@ spec:
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          valueFrom: 
-            configMapKeyRef:
-              name: wordpress-data
-              key: mysql_host
+          value: wordpress-mysql
         - name: WORDPRESS_DB_PASSWORD
-          valueFrom: 
-            secretKeyRef:
-              name: wp-secrets
-              key: mysql_pass
+          value: DEVOPS1
+        - name: WORDPRESS_DB_USER
+          value: dbuser
+        - name: WORDPRESS_DB_NAME
+          value: mydb
         ports:
         - containerPort: 80
           name: wordpress

@@ -31,21 +31,27 @@ spec:
         app: wordpress
         tier: mysql
     spec:
+      imagePullSecrets:
+      - name: gcr-access
       containers:
       - image: gcr.io/rising-area-331809/mydb:v1
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
-          valueFrom: 
-            secretKeyRef:
-              name: wp-secrets
-              key: mysql_pass
+          value: DEVOPS1
+        - name: MYSQL_PASSWORD
+          value: DEVOPS1
+        - name: MYSQL_DATABASE
+          value: mydb
+        - name: MYSQL_USER
+          value: dbuser
         ports:
         - containerPort: 3306
           name: mysql
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
+          subPath: mysql
         - name: db-creds
           mountPath: /root/.ssh
       volumes:
