@@ -34,7 +34,7 @@ spec:
       imagePullSecrets:
       - name: gcr-access
       containers:
-      - image: gcr.io/rising-area-331809/mydb:v1
+      - image: gcr.io/coit-microservices/mydb:v1
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
